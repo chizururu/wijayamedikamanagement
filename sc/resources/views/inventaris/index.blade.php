@@ -17,7 +17,7 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Kode</th>
+                            <th>No</th>
                             <th>Nama</th>
                             <th>Kategori</th>
                             <th>Jumlah</th>
@@ -29,7 +29,7 @@
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>Kode</th>
+                            <th>No</th>
                             <th>Nama</th>
                             <th>Kategori</th>
                             <th>Jumlah</th>
@@ -42,7 +42,7 @@
                     <tbody>
                     @foreach($inventaris as $items)
                         <tr>
-                            <td>{{$items->id}}</td>
+                            <td>{{ $loop->iteration }}</td>
                             <td>{{$items->nama_barang}}</td>
                             <td>{{$items->kategori_barang}}</td>
                             <td>{{$items->jumlah_stok}}</td>
