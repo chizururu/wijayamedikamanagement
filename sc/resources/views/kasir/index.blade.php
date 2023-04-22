@@ -31,7 +31,7 @@
                     <h5 class="card-title">Rincian Pesanan</h5>
                 </div>
                 <div class="col-sm-1 py-2">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAddBarang"><i class="bi bi-bookmark-plus-fill"></i></button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addBarang"><i class="bi bi-bookmark-plus-fill"></i></button>
                 </div>
             </div>
             <table id="tableBarang" class="table">
@@ -74,7 +74,7 @@
         </div>
     </div>
     <!--Modals Form Add Barans-->
-    <div class="modal fade" id="modalAddBarang" tabindex="-1">
+    <div class="modal fade" id="addBarang" tabindex="-1">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\transaksi;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class TransaksiController extends Controller
 {
@@ -16,8 +17,13 @@ class TransaksiController extends Controller
     {
         //
         /*date_default_timezone_set('Asia/Jakarta');*/
-        $transaksi = transaksi::all();
-        return view('transaksi.index')->with('transaksi', $transaksi);
+        $tanggal = $request->input('tanggal');
+
+        if(!$tanggal) {
+            $tanggal = date('Y-m-d');
+        }
+        $transaksi = transaksi::whereDate('created_at', $tanggal)->get();
+        return view('transaksi.index', compact('transaksi', 'tanggal'));
 
     }
 
@@ -29,6 +35,7 @@ class TransaksiController extends Controller
     public function create()
     {
         //
+
         return view('transaksi.create');
     }
 
@@ -41,8 +48,17 @@ class TransaksiController extends Controller
     public function store(Request $request)
     {
         //
-    }
+        $validateData = $request->validate([
+            'nama_pelanggan' => 'required',
+            'total_harga' => 'required',
+        ]);
+        $transaksi = new transaksi();
+        $transaksi->nama_pelanggan = $validateData['nama_pelanggan'];
+        $transaksi->total_harga = $validateData['total_harga'];
+        $transaksi->save();
 
+        return redirect()->route('transaksi.index');
+    }
     /**
      * Display the specified resource.
      *
